@@ -9,7 +9,7 @@
 /* Basic information exposed publicly */
 #define SMEXT_CONF_NAME		"Steam Family Ban"
 #define SMEXT_CONF_DESCRIPTION		"Denied connects from Steam Family Sharing Accounts"
-#define SMEXT_CONF_VERSION		"1.0"
+#define SMEXT_CONF_VERSION		"1.1"
 #define SMEXT_CONF_AUTHOR		"Accelerator"
 #define SMEXT_CONF_URL			"https://core-ss.org"
 #define SMEXT_CONF_LOGTAG		"FamilyBan"

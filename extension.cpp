@@ -27,9 +27,13 @@ void SteamFamilyBan::OnClientPutInServer(int client)
 
 	if (pPlayer != NULL && !pPlayer->IsFakeClient())
 	{
-		if (m_familySharingTable.has(pPlayer->GetAuthString()))
+		const char *pAuth = pPlayer->GetAuthString();
+		if (pAuth != NULL)
 		{
-			gamehelpers->AddDelayedKick(client, pPlayer->GetUserId(), "Family Sharing users are not allowed to join this server");
+			if (m_familySharingTable.has(pAuth))
+			{
+				gamehelpers->AddDelayedKick(client, pPlayer->GetUserId(), "Family Sharing users are not allowed to join this server");
+			}
 		}
 	}
 }
@@ -40,7 +44,11 @@ void SteamFamilyBan::OnClientDisconnecting(int client)
 
 	if (pPlayer != NULL && !pPlayer->IsFakeClient())
 	{
-		m_familySharingTable.removeIfExists(pPlayer->GetAuthString());
+		const char *pAuth = pPlayer->GetAuthString();
+		if (pAuth != NULL)
+		{
+			m_familySharingTable.removeIfExists(pAuth);
+		}
 	}
 }
 
